@@ -27,5 +27,10 @@ class MyTestCase(unittest.TestCase):
         with self.assertRaises(ValueError):
             s = t.Student("123", "Zachary", "CIS", 3.5)
 
+    def test_object_not_created_first_name(self):
+        with self.assertRaises(ValueError):
+            s = t.Student("Hayes", "123", "CIS", 3.5)
+
+
 if __name__ == '__main__':
     unittest.main()
