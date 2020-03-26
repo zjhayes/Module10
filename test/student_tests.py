@@ -20,5 +20,8 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(self.student.major, "CIS")
         self.assertEqual(self.student.gpa, 3.5)
 
+    def test_student_str(self):
+        self.assertEqual(str(self.student), "Hayes, Zachary has major CIS with gpa 3.5")
+
 if __name__ == '__main__':
     unittest.main()
