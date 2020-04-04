@@ -1,14 +1,13 @@
 # Zachary Hayes
+from class_definitions.customer import Customer
+
+
 class Invoice:
     '''Invoice Class'''
 
-    def __init__(self, id, cust_id, lname, fname, phone, add, items={}):
+    def __init__(self, id, cust, items={}):
         self.invoice_id = id
-        self.customer_id = cust_id
-        self.last_name = lname
-        self.first_name = fname
-        self.phone_number = phone
-        self.address = add
+        self.customer = cust
         self.items_with_price = items
 
     def add_item(self, item_and_price):
@@ -16,6 +15,7 @@ class Invoice:
 
     def create_invoice(self):
         running_total = 0
+        print(self.customer.display())
         for item in self.items_with_price:
             print(item + ".....$%.2f" % self.items_with_price.get(item))
             running_total += self.items_with_price.get(item)
@@ -24,8 +24,10 @@ class Invoice:
         print("Total.....$%.2f" % (running_total + tax))
 
 
-# Driver code
-invoice = Invoice(1, 123, '1313 Disneyland Dr, Anaheim, CA 92802' ,'Mouse', 'Minnie', '555-867-5309')
+# Driver
+captain_mal = Customer(1, 'Reynolds', 'Mel', 'No phones', 'Firefly, somewhere in the verse')
+invoice = Invoice(1, captain_mal)
 invoice.add_item({'iPad': 799.99})
 invoice.add_item({'Surface': 999.99})
 invoice.create_invoice()
+del captain_mal
